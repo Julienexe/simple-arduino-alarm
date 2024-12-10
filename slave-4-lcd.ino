@@ -15,4 +15,16 @@ void setup() {
   lcd.backlight();
 }
 
+void loop() {
+  lcd.setCursor(0, 0);
+  lcd.print("Thresh: ");
+  lcd.print(threshold);
+  lcd.print(" cm   ");
 
+  lcd.setCursor(0, 1);
+  lcd.print("Dist: ");
+  lcd.print(distance);
+  lcd.print(" cm   ");
+
+  delay(200);
+}
