@@ -9,7 +9,7 @@ void setup() {
   Wire.onRequest(sendDistance);
 
   DDRD |= (1 << TRIG_PIN); 
-  DDRD &= ~(1 << ECHO_PIN); // Set ECHO_PIN as INPUT
+  DDRD &= ~(1 << ECHO_PIN); 
 }
 
 void loop() {
