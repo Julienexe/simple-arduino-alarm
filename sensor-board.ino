@@ -8,7 +8,7 @@ void setup() {
   Wire.begin(SLAVE_ADDRESS);
   Wire.onRequest(sendDistance);
 
-  DDRD |= (1 << TRIG_PIN); // Set TRIG_PIN as OUTPUT
+  DDRD |= (1 << TRIG_PIN); 
   DDRD &= ~(1 << ECHO_PIN); // Set ECHO_PIN as INPUT
 }
 
