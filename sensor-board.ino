@@ -8,7 +8,6 @@ void setup() {
   Wire.begin(SLAVE_ADDRESS);
   Wire.onRequest(sendDistance);
 
-  // Set TRIG_PIN as OUTPUT and ECHO_PIN as INPUT using direct register access
   DDRD |= (1 << TRIG_PIN); // Set TRIG_PIN as OUTPUT
   DDRD &= ~(1 << ECHO_PIN); // Set ECHO_PIN as INPUT
 }
@@ -36,14 +35,12 @@ void sendDistance() {
 }
 
 long getUltrasonicDistance() {
-  // Trigger the ultrasonic sensor using direct register access
   PORTD &= ~(1 << TRIG_PIN); // Set TRIG_PIN LOW
   delayMicroseconds(2);
   PORTD |= (1 << TRIG_PIN); // Set TRIG_PIN HIGH
   delayMicroseconds(10);
   PORTD &= ~(1 << TRIG_PIN); // Set TRIG_PIN LOW
 
-  // Measure the pulse duration on ECHO_PIN
   return pulseIn(ECHO_PIN, HIGH);
 }
 
