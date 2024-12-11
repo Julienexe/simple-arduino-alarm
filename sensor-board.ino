@@ -35,11 +35,11 @@ void sendDistance() {
 }
 
 long getUltrasonicDistance() {
-  PORTD &= ~(1 << TRIG_PIN); // Set TRIG_PIN LOW
+  PORTD &= ~(1 << TRIG_PIN); 
   delayMicroseconds(2);
-  PORTD |= (1 << TRIG_PIN); // Set TRIG_PIN HIGH
+  PORTD |= (1 << TRIG_PIN); 
   delayMicroseconds(10);
-  PORTD &= ~(1 << TRIG_PIN); // Set TRIG_PIN LOW
+  PORTD &= ~(1 << TRIG_PIN); 
 
   return pulseIn(ECHO_PIN, HIGH);
 }
