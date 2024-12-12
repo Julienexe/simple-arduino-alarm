@@ -28,3 +28,9 @@ void loop() {
 
   delay(200);
 }
+void receiveData(int byteCount) {
+  if (byteCount == 4) {
+    threshold = Wire.read() << 8 | Wire.read();
+    distance = Wire.read() << 8 | Wire.read();
+  }
+}
