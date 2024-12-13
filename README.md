@@ -1,4 +1,4 @@
-# proximity-arduino-alarm
+## Proximity-arduino-alarm
 Distributed proximity alarm system with 4 boards, all arduino Unos.
 
 # Operation 
@@ -12,4 +12,5 @@ The potentiometer board, used to set a value used to compare for proximity, set 
 
 The LCD board, displays status information to the user, including the set threshold and the current reading on the ultrasonic sensor
 
-# Connection, all 4 boards were connected using pins A4 and A5 for I2C, with one master and 3 slaves.
+# Connection 
+all 4 boards were connected using pins A4 and A5 for I2C, with one master and 3 slaves.
