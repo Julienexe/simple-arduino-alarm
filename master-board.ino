@@ -12,7 +12,7 @@ int measuredDistance = 0;
 
 void setup() {
     Wire.begin(); // Start as master
-    setPinMode(ddrB, portB, BUZZER_PIN, 1); // Set BUZZER_PIN as OUTPUT
+    PinConfig(ddrB, portB, BUZZER_PIN, 1); // Set BUZZER_PIN as OUTPUT
 }
 
 void loop() {
@@ -30,9 +30,9 @@ void loop() {
 
     // Compare and control buzzer
     if (measuredDistance <= thresholdDistance) {
-        digitalWriteDirect(portB, BUZZER_PIN, HIGH);
+        WriteRegisterDigital(portB, BUZZER_PIN, HIGH);
     } else {
-        digitalWriteDirect(portB, BUZZER_PIN, LOW);
+        WriteRegisterDigital(portB, BUZZER_PIN, LOW);
     }
 
     // Send data to LCD board
@@ -46,7 +46,7 @@ void loop() {
     delay(200);
 }
 
-void setPinMode(volatile uint8_t *ddr, volatile uint8_t *port, uint8_t pin, uint8_t mode) {
+void PinConfig(volatile uint8_t *ddr, volatile uint8_t *port, uint8_t pin, uint8_t mode) {
         if (mode == 0) { // INPUT mode
                 *ddr &= ~(1 << pin);    // Clear the corresponding bit in the DDR to set as input
                 *port &= ~(1 << pin);   // Clear the corresponding bit in the PORT to disable pull-up
@@ -58,7 +58,7 @@ void setPinMode(volatile uint8_t *ddr, volatile uint8_t *port, uint8_t pin, uint
         }
 }
 
-void digitalWriteDirect(volatile uint8_t *port, uint8_t pin, uint8_t value) {
+void WriteRegisterDigital(volatile uint8_t *port, uint8_t pin, uint8_t value) {
     if (value == LOW) {
         *port &= ~(1 << pin); // Clear the corresponding bit in the PORT to set it LOW
     } else {
